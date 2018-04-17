@@ -87,9 +87,91 @@ Create a class called Bookmarker
 
 */
 
+class Bookmarker{
+
+    constructor () {
+        this.bookmarks = JSON.parse(localStorage.getItem('BOOKMARKS'));
+        if(!this.bookmarks){
+            this.bookmarks = [
+                {url: 'https://github.com/', 
+                description: 'Open source distributed version control site', 
+                title: 'GitHub',
+                image: "BookmarkerUI.png"},
+                {url: 'https://www.pexels.com/', 
+                description: 'Really cool site for open source photos', 
+                title: 'Pexels',
+                image: 'BookmarkerUI.png'}
+            ];
+        }
+        this.loadBookmarks();
+    }
+
+    loadBookmarks(){
+        let bookmarksHtml = this.bookmarks.reduce(
+            (html,url,index) => html += this.generateBookmarksHtml(url, index), '');
+        document.getElementById('bookmarksRow').innerHTML = bookmarksHtml;
+        localStorage.setItem('BOOKMARKS', JSON.stringify(this.bookmarks));
+    }
+
+    generateBookmarksHtml(bookmark, index){
+        return `
+        <ul class="bookmarks-list" id="bookmarkList">
+            <li class="bookmarks-list">
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 imageCol" id="imageCol">
+                    <img src= 'BookmarkerUI.png' width="80%" height="80%" 
+                    class="center">
+                </div>
+                <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" id="urlAndDescription">
+                    <div class="row url">
+                        <a href="${bookmark.url}">${bookmark.title}</a>
+                    </div>
+                    <div class="row description">
+                        ${bookmark.description}
+                    </div>
+                </div>
+                <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
+                    <a class = "" href="/"><i class="delete-icon glyphicon glyphicon-trash"
+                    onClick = "bookmark.deleteBookmark(event, ${index})"></i></a>
+                </div>
+            </li>
+        </ul>
+        `;
+    }
+
+    deleteBookmark(event, bookmarkIndex){
+        event.preventDefault();
+        this.bookmarks.splice(bookmarkIndex, 1);
+        this.loadBookmarks();
+    }
+
+    addBookmarkClick(){
+        let target = document.getElementById('url');
+        this.addBookmark(target.value);
+        target.value = "";
+    }
+
+    addBookmark(bookmark){
+        let newBookmark = {
+            url,
+            description
+        };
+        let urlInput = document.getElementById('url');
+        let descriptionInput = document.getElementById('description');
+        if(bookmark === ''){
+            urlInput.add('has-error');
+        } else {
+            urlInput.remove('has-erro');
+            this.bookmarks.push(newBookmark);
+            this.loadBookmarks();
+        }
+    }
+}
+
 /*  THIS IS NECESSARY FOR TESTING ANY OF YOUR CODE
     declare a variable bookmarker
     Add a window on load event handler that instantiates a Bookmarker object.  
     Use and arrow or anonymous function
 */
 
+let bookmark;
+window.onload = () => {bookmark = new Bookmarker()}

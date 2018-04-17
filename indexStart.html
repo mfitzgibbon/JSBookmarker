@@ -2,27 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content = "width=device-width, initial-scale=1.0">
   <title>My Bookmarking App in JavaScript</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="stylesStart.css">
 </head>
 <body>
-    <div class="overlay" ></div>
+    <!--
+    <div class="overlay" >
 
-    <div class="floater content">
-        <form class="bookmark-form">
-            <div class="floater-top">
-                <input id="url" type="text" class="form-control">
-                <input id="description" type="text" class="form-control">
-            </div>
-            <div class="floater-bottom">
-                <button type="submit" class="btn btn-primary btn-sm">Add</button>
-            </div>
-        </form>
     </div>
-
-    <div class="bookmarks-list content">
-        
+    -->
+    <div class = "container">
+        <div class="row">
+            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"></div>
+            <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" >
+                <div class = "row content-area">
+                    <h2>Add new bookmark</h2>
+                    <div class="floater content">
+                        <form class="bookmark-form">
+                            <div class="floater-top">
+                                <input id="url" type="url" placeholder="New URL" class="form-control">
+                                <input id="description" type="text" placeholder="New description" class="form-control">
+                            </div>
+                            <div class="floater-bottom">
+                                <button type="submit" class="btn btn-primary btn-sm" onClick="bookmark.addBookmarkClick()">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"></div>
+        </div>
+        <div class="row" id="bookmarksRow">
+            <ul class="bookmarks-list" id="bookmarkList">
+                <li class="bookmarks-list">
+                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 imageCol" id="imageCol">
+                        <img src="BookmarkerUI.png" width="80%" height="80%" 
+                        class="center">
+                    </div>
+                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" id="urlAndDescription">
+                            <div class="row content">
+                                <div class="floater-top">
+                                    Test URL
+                                </div>
+                            </div>
+                            <div class="row content">
+                                Test description2
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
+                            <a class = "" href="/"><i class="delete-icon glyphicon glyphicon-trash"></i></a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="bookmarks-list" id="bookmarkList">
+                    <li class="bookmarks-list">
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 imageCol" id="imageCol">
+                            <img src="BookmarkerUI.png" width="80%" height="80%" 
+                            class="center">
+                        </div>
+                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" id="urlAndDescription">
+                            <div class="row url">
+                                <link Test2>
+                            </div>
+                            <div class="row description">
+                                Test description2
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
+                            <a class = "" href="/"><i class="delete-icon glyphicon glyphicon-trash"></i></a>
+                        </div>
+                    </li>
+                </ul>
+        </div>
     </div>
     <script src="src/indexStart.js"></script>    
 </body>

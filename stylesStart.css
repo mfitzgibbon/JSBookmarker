@@ -1,17 +1,19 @@
 body { 
     padding: 30px; 
-    background-image: url('images/background.jpeg');
-    background-size: cover;
+    background-image: url(../Bookmarker/images/background.jpeg);
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 .overlay  {
     position: fixed;
     display: none;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(21, 153, 9, 0.8);
     width: 100%;
     height: 100%;
-    opacity: 1;
     transition: 0.3s ease opacity;
     z-index: 10;
     pointer-events: none;
@@ -58,4 +60,52 @@ body.show-floater .overlay {
 .floater-bottom button {
     padding: 4px 8px;
     font-size: 14px;
+}
+.form-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bookmarks-list{
+    background: #FFF;
+    display: flex;
+    flex-flow: wrap;
+    padding: 0%;
+}
+.bookmarks-list-item{
+    margin-bottom: 10px;
+}
+.url{
+    font-size: 20px;
+    padding: 5% 0%;
+    border: 4px gray;
+    box-shadow: none;
+    font-size: 16px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+}
+.description{
+    font-size: 14px;
+    padding: 0% 0% 0% 5%;
+    border: 4px gray;
+    box-shadow: none;
+    font-size: 16px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+}
+.center{
+    display: block;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: 10%;
+}
+.imageCol{
+    padding-left: 0%;
+}
+.delete-icon-area{
+    display: flex;
+    align-items: center;
+}
+.delete-icon{
+    color: red;
 }
