@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mfitzgibbon/JSBookmarker/issues"
   },
-  "homepage": "https://github.com/mfitzgibbon/JSBookmarker#readme"
+  "homepage": "https://github.com/mfitzgibbon/JSBookmarker#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
 }
