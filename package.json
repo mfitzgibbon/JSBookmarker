@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/mfitzgibbon/JSBookmarker#readme",
   "dependencies": {
-    "bootstrap": "^3.3.7"
-  }
+    "babel": "^6.23.0",
+    "bootstrap": "^3.3.7",
+    "node": "^10.0.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "bookmarker"
+  ]
 }

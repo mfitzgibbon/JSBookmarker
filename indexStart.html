@@ -20,13 +20,13 @@
                 <div class = "row content-area">
                     <h2>Add new bookmark</h2>
                     <div class="floater content">
-                        <form class="bookmark-form">
+                        <form class="bookmark-form" id = "bookmarkInputForm" onsubmit="addBookmark(event)">
                             <div class="floater-top">
                                 <input id="url" type="url" placeholder="New URL" class="form-control">
                                 <input id="description" type="text" placeholder="New description" class="form-control">
                             </div>
                             <div class="floater-bottom">
-                                <button type="submit" class="btn btn-primary btn-sm" onClick="bookmark.addBookmarkClick()">Add</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Add</button>
                             </div>
                         </form>
                     </div>
