@@ -153,7 +153,7 @@ class Bookmarker{
 
         const url = document.querySelector('#url').value;
         const description = document.querySelector('#description').value;
-        fetch(`${this.apiUrl}/${url}?app_id=${this.appId}`)
+        fetch(`${apiUrl}/${url}?app_id=${appId}`)
         .then(response => response.json())
         .then(data => {
             const bookmark = {
