@@ -145,12 +145,6 @@ class Bookmarker{
         this.loadBookmarks();
     }
 
-    addBookmarkClick(){
-        let target = document.getElementById('url');
-        this.addBookmark(target.value);
-        target.value = "";
-    }
-
     addBookmark(event){
         /*
         event.preventDefault();
