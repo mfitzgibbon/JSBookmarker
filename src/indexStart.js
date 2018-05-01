@@ -90,7 +90,7 @@ Create a class called Bookmarker
 class Bookmarker{
 
     constructor () {
-        document.getElementById('bookmarkInputForm').addEventListener("submit", this.addBookmark(event));
+        document.getElementById('bookmarkInputForm').onsubmit = () => this.addBookmark(event);
         this.bookmarks = JSON.parse(localStorage.getItem('BOOKMARKS'));
         if(!this.bookmarks){
             this.bookmarks = [
@@ -152,6 +152,7 @@ class Bookmarker{
     }
 
     addBookmark(event){
+        /*
         event.preventDefault();
         let newBookmark = {
             url,
@@ -165,12 +166,23 @@ class Bookmarker{
             urlInput.add('has-error');
         } else {
             urlInput.remove('has-error');
-            //newBookmark.url = urlInput.value;
-            //newBookmark.description = descriptionInput.value;
-            //newBookmark.title = urlInput.value;
-            //this.bookmarks.add(newBookmark)
-           //this.loadBookmarks();
+            newBookmark.url = urlInput.value;
+            newBookmark.description = descriptionInput.value;
+            newBookmark.title = urlInput.value;
+            this.bookmarks.add(newBookmark)
+           this.loadBookmarks();
         }
+        */
+       event.preventDefault();
+       let submissionForm = document.getElementById('bookmarkInputForm');
+       let newBookmark = {
+        url : submissionForm[0].value,
+        description : submissionForm[1].value,
+        title : submissionForm[0].value,
+        image : ''
+        };
+        this.bookmarks.push(newBookmark);
+        this.loadBookmarks();
     }
 }
 
