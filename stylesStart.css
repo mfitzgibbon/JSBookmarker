@@ -1,6 +1,6 @@
 body { 
     padding: 30px; 
-    background-image: url(../Bookmarker/images/background.jpeg);
+    background-image: url(/images/background.jpeg);
     background-size: auto;
     background-repeat: no-repeat;
 }

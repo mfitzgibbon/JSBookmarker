@@ -97,7 +97,7 @@ class Bookmarker{
                 {url: 'https://github.com/', 
                 description: 'Open source distributed version control site', 
                 title: 'GitHub',
-                image: "BookmarkerUI.png"},
+                image: "https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png"},
                 {url: 'https://www.pexels.com/', 
                 description: 'Really cool site for open source photos', 
                 title: 'Pexels',
@@ -119,7 +119,7 @@ class Bookmarker{
         <ul class="bookmarks-list" id="bookmarkList">
             <li class="bookmarks-list">
                 <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 imageCol" id="imageCol">
-                    <img src= 'BookmarkerUI.png' width="80%" height="80%" 
+                    <img src= '${bookmark.image}' width="80%" height="80%" 
                     class="center">
                 </div>
                 <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" id="urlAndDescription">
@@ -147,6 +147,31 @@ class Bookmarker{
 
     addBookmark(event){
         event.preventDefault();
+        const apiUrl = 'https://opengraph.io/api/1.0/site';
+        const appId = '5ae89b9859a222f23d35160a';
+        const longString = '${this.apiUrl}/${url}?app_id=${this.appId}';
+
+        const url = document.querySelector('#url').value;
+        const description = document.querySelector('#description').value;
+        fetch(`${this.apiUrl}/${url}?app_id=${this.appId}`)
+        .then(response => response.json())
+        .then(data => {
+            const bookmark = {
+                url : url,
+                description : description,
+                title : data.hybridGraph.title,
+                image : data.hybridGraph.image
+            };
+        this.bookmarks.push(bookmark);
+        this.loadBookmarks();
+        document.querySelector('#url').value = '';
+        document.querySelector('#description').value = '';
+        })
+        .catch(error => {
+            console.log('There was a problem getting the info!');
+        });
+        
+        /*
         let submissionForm = document.getElementById('bookmarkInputForm');
         let newBookmark = {
         url : submissionForm[0].value,
@@ -158,6 +183,7 @@ class Bookmarker{
         submissionForm[0].value = '';
         submissionForm[1].value = '';
         this.loadBookmarks();
+        */
     }
 }
 

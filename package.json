@@ -4,7 +4,11 @@
   "description": "Package for bookmarker json",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "babel src -d dist --presets=es2015 -ws",
+    "build": "rm -rf dist && dist --presets=es2015 -ws",
+    "serve": "http-server",
+    "wServe": "concurrently \"npm run watch\" \"npm run serve\""
   },
   "repository": {
     "type": "git",
@@ -21,7 +25,12 @@
     "bootstrap": "^3.3.7",
     "node": "^10.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "concurrently": "^3.5.1",
+    "http-server": "^0.11.1"
+  },
   "keywords": [
     "bookmarker"
   ]
